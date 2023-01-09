@@ -26,19 +26,29 @@ $ source venv/bin/activate
 ```
 
 ```
-# Launch a second terminal instance and, in it, issue requests to the application:
+# Issue requests to the application by
+# either (a) using your web browser to navigate to http://localhost:8000/api/ ,
+# or (b) launching a second terminal instance and executing the following command:
 
 $ http localhost:8000/api/
 
 HTTP/1.1 200 OK
-Content-Length: 14
+Allow: OPTIONS, GET
+Content-Length: 154
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Mon, 09 Jan 2023 05:43:40 GMT
+Date: Mon, 09 Jan 2023 06:03:50 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 
-"Hello world!"
+{
+    "Create": "/task-create/",
+    "Delete": "/task-delete/<str:pk>/",
+    "Detail View": "/task-detail/<str:pk>/",
+    "List": "/task-list/",
+    "Update": "/task-update/<str:pk>/"
+}
 ```
