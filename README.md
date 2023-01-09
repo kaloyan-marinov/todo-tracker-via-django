@@ -49,6 +49,10 @@ Did not find any relations.
 
 )
 
+```
+(venv) $ python manage.py migrate
+```
+
 ---
 
 ```
