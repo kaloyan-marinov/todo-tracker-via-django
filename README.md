@@ -113,10 +113,10 @@ $ http POST localhost:8000/api/task-create/ \
     title='get salad'
 HTTP/1.1 201 Created
 Allow: POST, OPTIONS
-Content-Length: 39
+Content-Length: 46
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:36:46 GMT
+Date: Tue, 10 Jan 2023 05:49:26 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
@@ -125,6 +125,7 @@ X-Frame-Options: DENY
 
 {
     "completed": false,
+    "id": 1,
     "title": "get salad"
 }
 
@@ -133,10 +134,10 @@ $ http POST localhost:8000/api/task-create/ \
     completed='True'
 HTTP/1.1 201 Created
 Allow: POST, OPTIONS
-Content-Length: 39
+Content-Length: 46
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:37:10 GMT
+Date: Tue, 10 Jan 2023 05:49:53 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
@@ -145,6 +146,7 @@ X-Frame-Options: DENY
 
 {
     "completed": true,
+    "id": 2,
     "title": "do laundry"
 }
 ```
