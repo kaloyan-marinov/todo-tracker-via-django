@@ -58,3 +58,23 @@ def task_detail(request, pk):
     task = Task.objects.get(id=pk)
     t_s = TaskSerializer(instance=task, many=False)
     return Response(data=t_s.data)
+
+
+@api_view(["PUT"])
+def task_update(request, pk):
+    task = Task.objects.get(id=pk)
+    t_s = TaskSerializer(instance=task, data=request.data)
+
+    if t_s.is_valid():
+        # Send the [internally updated `Task`] item back to the database
+        # and save it.
+        t_s.save()
+        return Response(
+            data=t_s.data,
+            status=200,
+        )
+
+    return Response(
+        data={"error": "the submitted 'Task data' was invalid"},
+        status=400,
+    )

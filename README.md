@@ -90,7 +90,7 @@ X-Frame-Options: DENY
 ```
 
 ```
-Issue the following additional requests to the application:
+# Issue the following additional requests to the application:
 
 $ http POST localhost:8000/api/task-create/
 
@@ -152,6 +152,10 @@ X-Frame-Options: DENY
     "id": 2,
     "title": "do laundry"
 }
+```
+
+```
+# Issue the following additional requests to the application:
 
 $ http localhost:8000/api/task-list/
 
@@ -179,6 +183,10 @@ X-Frame-Options: DENY
         "title": "do laundry"
     }
 ]
+```
+
+```
+# Issue the following additional requests to the application:
 
 $ http localhost:8000/api/task-detail/1/
 
@@ -198,5 +206,49 @@ X-Frame-Options: DENY
     "completed": false,
     "id": 1,
     "title": "get salad"
+}
+```
+
+```
+# Issue the following additional requests to the application:
+
+$ http PUT localhost:8000/api/task-update/3/
+
+HTTP/1.1 400 Bad Request
+Allow: OPTIONS, PUT
+Content-Length: 49
+Content-Type: application/json
+Cross-Origin-Opener-Policy: same-origin
+Date: Tue, 10 Jan 2023 06:05:29 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "error": "the submitted 'Task data' was invalid"
+}
+
+$ http PUT localhost:8000/api/task-update/3/ \
+    title='do a workout' \
+    completed='False'
+
+HTTP/1.1 200 OK
+Allow: PUT, OPTIONS
+Content-Length: 49
+Content-Type: application/json
+Cross-Origin-Opener-Policy: same-origin
+Date: Tue, 10 Jan 2023 06:08:58 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "completed": false,
+    "id": 3,
+    "title": "do a workout"
 }
 ```
