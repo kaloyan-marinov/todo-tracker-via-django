@@ -9,6 +9,8 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from .serializers import TaskSerializer
+
 # Create your views here.
 
 
@@ -22,3 +24,15 @@ def api_overview(request):
         "Delete": "/task-delete/<str:pk>/",
     }
     return Response(api_urls)
+
+
+@api_view(["POST"])
+def task_create(request):
+    t_s = TaskSerializer(data=request.data)
+
+    if t_s.is_valid():
+        # Send the [internally constructed `Task`] item back to the database
+        # and save it.
+        t_s.save()
+
+    return Response(t_s.data)
