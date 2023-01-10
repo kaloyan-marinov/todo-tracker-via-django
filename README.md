@@ -149,4 +149,30 @@ X-Frame-Options: DENY
     "id": 2,
     "title": "do laundry"
 }
+
+$ http localhost:8000/api/task-list/
+HTTP/1.1 200 OK
+Allow: OPTIONS, GET
+Content-Length: 95
+Content-Type: application/json
+Cross-Origin-Opener-Policy: same-origin
+Date: Tue, 10 Jan 2023 05:52:52 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+[
+    {
+        "completed": false,
+        "id": 1,
+        "title": "get salad"
+    },
+    {
+        "completed": true,
+        "id": 2,
+        "title": "do laundry"
+    }
+]
 ```

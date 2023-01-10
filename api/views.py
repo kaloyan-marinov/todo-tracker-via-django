@@ -10,6 +10,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .serializers import TaskSerializer
+from .models import Task
 
 # Create your views here.
 
@@ -43,3 +44,10 @@ def task_create(request):
         data={"error": "the submitted 'Task data' was invalid"},
         status=400,
     )
+
+
+@api_view(["GET"])
+def task_list(request):
+    tasks = Task.objects.all()
+    t_s = TaskSerializer(instance=tasks, many=True)
+    return Response(data=t_s.data)
