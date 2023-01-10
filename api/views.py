@@ -85,6 +85,5 @@ def task_delete(request, pk):
     task = Task.objects.get(id=pk)
     task.delete()
     return Response(
-        data={"message": f"Task(id={pk}) was deleted successfully"},
-        status=200,
+        status=204,
     )

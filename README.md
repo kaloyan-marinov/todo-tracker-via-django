@@ -268,19 +268,14 @@ api.models.Task.DoesNotExist: Task matching query does not exist.
 
 $ http DELETE localhost:8000/api/task-delete/1/
 
-HTTP/1.1 200 OK
+HTTP/1.1 204 No Content
 Allow: OPTIONS, DELETE
-Content-Length: 49
-Content-Type: application/json
+Content-Length: 0
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 06:20:18 GMT
+Date: Tue, 10 Jan 2023 06:24:35 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
-
-{
-    "message": "Task(id=1) was deleted successfully"
-}
 ```
