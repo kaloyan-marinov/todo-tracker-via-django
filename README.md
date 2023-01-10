@@ -93,12 +93,12 @@ X-Frame-Options: DENY
 Issue the following additional requests to the application:
 
 $ http POST localhost:8000/api/task-create/
-HTTP/1.1 200 OK
-Allow: OPTIONS, POST
+HTTP/1.1 400 Bad Request
+Allow: POST, OPTIONS
 Content-Length: 49
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:32:35 GMT
+Date: Tue, 10 Jan 2023 05:36:26 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
@@ -111,12 +111,12 @@ X-Frame-Options: DENY
 
 $ http POST localhost:8000/api/task-create/ \
     title='get salad'
-HTTP/1.1 200 OK
+HTTP/1.1 201 Created
 Allow: POST, OPTIONS
 Content-Length: 39
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:21:42 GMT
+Date: Tue, 10 Jan 2023 05:36:46 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
@@ -131,12 +131,12 @@ X-Frame-Options: DENY
 $ http POST localhost:8000/api/task-create/ \
     title='do laundry' \
     completed='True'
-HTTP/1.1 200 OK
+HTTP/1.1 201 Created
 Allow: POST, OPTIONS
 Content-Length: 39
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:23:40 GMT
+Date: Tue, 10 Jan 2023 05:37:10 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie

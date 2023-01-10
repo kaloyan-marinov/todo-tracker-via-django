@@ -23,7 +23,7 @@ def api_overview(request):
         "Update": "/task-update/<str:pk>/",
         "Delete": "/task-delete/<str:pk>/",
     }
-    return Response(api_urls)
+    return Response(data=api_urls)
 
 
 @api_view(["POST"])
@@ -34,8 +34,12 @@ def task_create(request):
         # Send the [internally constructed `Task`] item back to the database
         # and save it.
         t_s.save()
-        return Response(t_s.data)
+        return Response(
+            data=t_s.data,
+            status=201,
+        )
 
     return Response(
-        {"error": "the submitted 'Task data' was invalid"},
+        data={"error": "the submitted 'Task data' was invalid"},
+        status=400,
     )
