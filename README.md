@@ -94,18 +94,20 @@ Issue the following additional requests to the application:
 
 $ http POST localhost:8000/api/task-create/
 HTTP/1.1 200 OK
-Allow: POST, OPTIONS
-Content-Length: 2
+Allow: OPTIONS, POST
+Content-Length: 49
 Content-Type: application/json
 Cross-Origin-Opener-Policy: same-origin
-Date: Tue, 10 Jan 2023 05:18:29 GMT
+Date: Tue, 10 Jan 2023 05:32:35 GMT
 Referrer-Policy: same-origin
 Server: WSGIServer/0.2 CPython/3.8.3
 Vary: Accept, Cookie
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
 
-{}
+{
+    "error": "the submitted 'Task data' was invalid"
+}
 
 $ http POST localhost:8000/api/task-create/ \
     title='get salad'

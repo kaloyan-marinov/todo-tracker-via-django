@@ -34,5 +34,8 @@ def task_create(request):
         # Send the [internally constructed `Task`] item back to the database
         # and save it.
         t_s.save()
+        return Response(t_s.data)
 
-    return Response(t_s.data)
+    return Response(
+        {"error": "the submitted 'Task data' was invalid"},
+    )
