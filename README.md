@@ -93,6 +93,7 @@ X-Frame-Options: DENY
 Issue the following additional requests to the application:
 
 $ http POST localhost:8000/api/task-create/
+
 HTTP/1.1 400 Bad Request
 Allow: POST, OPTIONS
 Content-Length: 49
@@ -111,6 +112,7 @@ X-Frame-Options: DENY
 
 $ http POST localhost:8000/api/task-create/ \
     title='get salad'
+
 HTTP/1.1 201 Created
 Allow: POST, OPTIONS
 Content-Length: 46
@@ -132,6 +134,7 @@ X-Frame-Options: DENY
 $ http POST localhost:8000/api/task-create/ \
     title='do laundry' \
     completed='True'
+
 HTTP/1.1 201 Created
 Allow: POST, OPTIONS
 Content-Length: 46
@@ -151,6 +154,7 @@ X-Frame-Options: DENY
 }
 
 $ http localhost:8000/api/task-list/
+
 HTTP/1.1 200 OK
 Allow: OPTIONS, GET
 Content-Length: 95
@@ -175,4 +179,24 @@ X-Frame-Options: DENY
         "title": "do laundry"
     }
 ]
+
+$ http localhost:8000/api/task-detail/1/
+
+HTTP/1.1 200 OK
+Allow: GET, OPTIONS
+Content-Length: 46
+Content-Type: application/json
+Cross-Origin-Opener-Policy: same-origin
+Date: Tue, 10 Jan 2023 05:56:58 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "completed": false,
+    "id": 1,
+    "title": "get salad"
+}
 ```
