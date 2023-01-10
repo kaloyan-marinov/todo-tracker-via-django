@@ -78,3 +78,13 @@ def task_update(request, pk):
         data={"error": "the submitted 'Task data' was invalid"},
         status=400,
     )
+
+
+@api_view(["DELETE"])
+def task_delete(request, pk):
+    task = Task.objects.get(id=pk)
+    task.delete()
+    return Response(
+        data={"message": f"Task(id={pk}) was deleted successfully"},
+        status=200,
+    )

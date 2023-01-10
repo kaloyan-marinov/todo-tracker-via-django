@@ -252,3 +252,35 @@ X-Frame-Options: DENY
     "title": "do a workout"
 }
 ```
+
+```
+# Issue the following additional requests to the application:
+
+$ http DELETE localhost:8000/api/task-delete/17/
+
+.
+.
+.
+  File "<path-to-local-clone-of-repository>/venv/lib/python3.8/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+api.models.Task.DoesNotExist: Task matching query does not exist.
+[10/Jan/2023 06:16:56] "DELETE /api/task-delete/17/ HTTP/1.1" 500 98836
+
+$ http DELETE localhost:8000/api/task-delete/1/
+
+HTTP/1.1 200 OK
+Allow: OPTIONS, DELETE
+Content-Length: 49
+Content-Type: application/json
+Cross-Origin-Opener-Policy: same-origin
+Date: Tue, 10 Jan 2023 06:20:18 GMT
+Referrer-Policy: same-origin
+Server: WSGIServer/0.2 CPython/3.8.3
+Vary: Accept, Cookie
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+
+{
+    "message": "Task(id=1) was deleted successfully"
+}
+```
